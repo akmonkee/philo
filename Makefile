@@ -12,7 +12,7 @@ FLAGS = -Wall -Werror -Wextra
 		${CC} ${FLAGS} -g -c $< -o ${<:.c=.o}
 
 $(NAME) : $(OUT)
-		$(CC) $(FLAGS) $(OUT) -o $(NAME) $(PRINTF)
+		$(CC) $(FLAGS) $(OUT) -o $(NAME)
 
 all: $(NAME)
 
