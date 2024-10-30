@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:07:41 by msisto            #+#    #+#             */
-/*   Updated: 2024/10/30 15:26:05 by msisto           ###   ########.fr       */
+/*   Updated: 2024/10/30 16:43:28 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	fork_maker(pthread_mutex_t *forks, int num)
 		i++;
 	}
 }
+
 void	philo_maker(philo_t *philos, table_t *table, pthread_mutex_t *forks, char **av)
 {
 	int	i;
@@ -51,7 +52,7 @@ void	philo_maker(philo_t *philos, table_t *table, pthread_mutex_t *forks, char *
 		philos[i].write_lock = &table->write_lock;
 		philos[i].dead_lock = &table->dead_lock;
 		philos[i].meal_lock = &table->meal_lock;
-		philos[i].dead = &table->dead_flag;
+		philos[i].dead = &table->dead_flag[0];
 		philos[i].r_fork = &forks[i];
 		if (i == 0)
 			philos[i].l_fork = &forks[philos[i].num_of_philos];
@@ -63,7 +64,10 @@ void	philo_maker(philo_t *philos, table_t *table, pthread_mutex_t *forks, char *
 
 void	table_builder(table_t *table, philo_t *philos)
 {
-	table->dead_flag = 0;
+	table->dead_flag = malloc(sizeof(int));
+	if (!table->dead_flag)
+		return ;
+	table->dead_flag[0] = 0;
 	table->philos = philos;
 	pthread_mutex_init(&table->write_lock, NULL);
 	pthread_mutex_init(&table->dead_lock, NULL);

@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:07:41 by msisto            #+#    #+#             */
-/*   Updated: 2024/10/30 15:41:49 by msisto           ###   ########.fr       */
+/*   Updated: 2024/10/30 16:25:23 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	*philo_routine(void	*input)
 	philo = (philo_t *)input;
 	if (philo->id % 2 == 0)
 		ft_usleep(1);
-	while (!dead_lock(philo))
+	while (dead_lock(philo) != 1)
 	{
 		eat(philo);
 		sleeping(philo);

@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:07:41 by msisto            #+#    #+#             */
-/*   Updated: 2024/10/30 15:54:40 by msisto           ###   ########.fr       */
+/*   Updated: 2024/10/30 16:39:12 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ void	no_alpha(int ac, char **av)
 
 int	main(int argc, char **argv)
 {
-	philo_t	*philos;
-	table_t	table;
+	philo_t			*philos;
+	table_t			table;
+	int				*dead_flag;
 	pthread_mutex_t	*forks;
 
 	if (argc > 6 || argc < 5)
