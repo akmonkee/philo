@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:07:41 by msisto            #+#    #+#             */
-/*   Updated: 2024/10/30 14:24:03 by msisto           ###   ########.fr       */
+/*   Updated: 2024/10/30 15:41:49 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	*philo_routine(void	*input)
 		ft_usleep(1);
 	while (!dead_lock(philo))
 	{
-		//eat(philo);
+		eat(philo);
 		sleeping(philo);
 		think(philo);
 	}
@@ -43,7 +43,7 @@ int	thread_create(table_t *table, pthread_mutex_t *forks)
 	int			i;
 
 	i = 0;
-	if (pthread_create(&monitor, NULL, &monitor_routine, &table->philos) != 0)
+	if (pthread_create(&monitor, NULL, &monitor_routine, table->philos) != 0)
 		destory_all(table, forks);
 	while (i < table->philos[0].num_of_philos)
 	{
