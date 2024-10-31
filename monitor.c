@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 12:17:15 by msisto            #+#    #+#             */
-/*   Updated: 2024/10/30 16:19:48 by msisto           ###   ########.fr       */
+/*   Updated: 2024/10/31 15:10:41 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	check_for_deads(philo_t *philos)
 	{
 		if (philo_dead_check(&philos[i]) == 1)
 		{
-			print_status("has died", &philos[i], philos[i].id);
+			print_status("died", &philos[i], philos[i].id);
 			pthread_mutex_lock(philos[i].dead_lock);
 			*philos->dead = 1;
 			pthread_mutex_unlock(philos[i].dead_lock);

@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 12:01:40 by akmonke           #+#    #+#             */
-/*   Updated: 2024/10/30 16:15:25 by msisto           ###   ########.fr       */
+/*   Updated: 2024/10/31 15:53:26 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,14 @@ void	think(philo_t *philo)
 void	eat(philo_t *philo)
 {
 	pthread_mutex_lock(philo->r_fork);
-	print_status("took a fork", philo, philo->id);
+	print_status("took the r fork", philo, philo->id);
 	if (philo->num_of_philos == 1)
 	{
 		ft_usleep(philo->time_to_die);
 		pthread_mutex_unlock(philo->r_fork);
-		return ;
 	}
 	pthread_mutex_lock(philo->l_fork);
-	print_status("took a fork", philo, philo->id);
+	print_status("took the l fork", philo, philo->id);
 	philo->eating = 1;
 	print_status("is eating", philo, philo->id);
 	pthread_mutex_lock(philo->meal_lock);

@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:04:49 by msisto            #+#    #+#             */
-/*   Updated: 2024/10/30 16:39:17 by msisto           ###   ########.fr       */
+/*   Updated: 2024/10/31 11:54:12 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct philo_s
 
 typedef struct table_s
 {
-	int				*dead_flag;
+	int				dead_flag;
 	pthread_mutex_t	dead_lock;
 	pthread_mutex_t	meal_lock;
 	pthread_mutex_t	write_lock;
@@ -63,7 +63,7 @@ size_t	get_current_time(void);
 int		ft_atoi(char *str);
 int		ft_usleep(size_t milliseconds);
 //thread//
-int		dead_lock(philo_t *philo);
+int		dead_check(philo_t *philo);
 void	*philo_routine(void	*input);
 int		thread_create(table_t *table, pthread_mutex_t *forks);
 //philo actions//
