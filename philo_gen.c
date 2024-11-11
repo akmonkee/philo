@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:07:41 by msisto            #+#    #+#             */
-/*   Updated: 2024/10/31 15:45:10 by msisto           ###   ########.fr       */
+/*   Updated: 2024/11/04 12:14:24 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ void	philo_maker(philo_t *philos, table_t *table, pthread_mutex_t *forks, char *
 		philos[i].dead_lock = &table->dead_lock;
 		philos[i].meal_lock = &table->meal_lock;
 		philos[i].dead = &table->dead_flag;
-		philos[i].r_fork = &forks[i];
+		philos[i].l_fork = &forks[i];
 		if (i == 0)
-			philos[i].l_fork = &forks[philos[i].num_of_philos];
+			philos[i].r_fork = &forks[philos[i].num_of_philos];
 		else
-			philos[i].l_fork = &forks[i - 1];
+			philos[i].r_fork = &forks[i - 1];
 		i++;
 	}
 }
