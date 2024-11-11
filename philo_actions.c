@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 12:01:40 by akmonke           #+#    #+#             */
-/*   Updated: 2024/11/11 10:35:30 by msisto           ###   ########.fr       */
+/*   Updated: 2024/11/11 13:58:58 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ void	eat(philo_t *philo)
 		pthread_mutex_unlock(philo->r_fork);
 	}
 	pthread_mutex_lock(philo->l_fork);
+	pthread_mutex_lock(philo->meal_lock);
 	philo->eating = 1;
 	print_status("is eating", philo, philo->id);
-	pthread_mutex_lock(philo->meal_lock);
 	philo->last_meal = get_current_time();
 	philo->meals_eaten++;
-	pthread_mutex_unlock(philo->meal_lock);
 	ft_usleep(philo->time_to_eat);
 	philo->eating = 0;
+	pthread_mutex_unlock(philo->meal_lock);
 	pthread_mutex_unlock(philo->r_fork);
 	pthread_mutex_unlock(philo->l_fork);
 }
