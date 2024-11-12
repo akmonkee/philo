@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:07:41 by msisto            #+#    #+#             */
-/*   Updated: 2024/10/31 15:33:35 by msisto           ###   ########.fr       */
+/*   Updated: 2024/11/12 11:43:43 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,7 @@ int	ft_atoi(char *str)
 		num = (num * 10) + (str[i] - '0');
 		i++;
 	}
+	if (num == 0)
+		return (write(2, "Error\n", 6), exit(1), 1);
 	return (num);
 }

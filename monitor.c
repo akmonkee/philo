@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 12:17:15 by msisto            #+#    #+#             */
-/*   Updated: 2024/11/11 12:03:28 by msisto           ###   ########.fr       */
+/*   Updated: 2024/11/12 09:58:46 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	philo_dead_check(philo_t *philo)
 {
 	pthread_mutex_lock(philo->meal_lock);
-	if ((get_current_time() - philo->last_meal >= philo->time_to_die) && philo->eating == 0)
+	if ((get_current_time() - philo->last_meal >= philo->time_to_die))
 		return (pthread_mutex_unlock(philo->meal_lock), 1);
 	pthread_mutex_unlock(philo->meal_lock);
 	return (0);
