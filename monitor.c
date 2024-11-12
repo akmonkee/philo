@@ -6,13 +6,13 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 12:17:15 by msisto            #+#    #+#             */
-/*   Updated: 2024/11/12 09:58:46 by msisto           ###   ########.fr       */
+/*   Updated: 2024/11/12 14:09:22 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	philo_dead_check(philo_t *philo)
+int	philo_dead_check(t_philo *philo)
 {
 	pthread_mutex_lock(philo->meal_lock);
 	if ((get_current_time() - philo->last_meal >= philo->time_to_die))
@@ -21,7 +21,7 @@ int	philo_dead_check(philo_t *philo)
 	return (0);
 }
 
-int	check_for_deads(philo_t *philos)
+int	check_for_deads(t_philo *philos)
 {
 	int	i;
 
@@ -41,7 +41,7 @@ int	check_for_deads(philo_t *philos)
 	return (0);
 }
 
-int	all_have_eaten(philo_t	*philos)
+int	all_have_eaten(t_philo	*philos)
 {
 	int	i;
 	int	ate_all;
@@ -70,9 +70,9 @@ int	all_have_eaten(philo_t	*philos)
 
 void	*monitor_routine(void *input)
 {
-	philo_t	*philos;
+	t_philo	*philos;
 
-	philos = (philo_t *)input;
+	philos = (t_philo *)input;
 	while (1)
 		if (all_have_eaten(philos) == 1 || check_for_deads(philos) == 1)
 			break ;

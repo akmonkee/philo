@@ -6,13 +6,13 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:07:41 by msisto            #+#    #+#             */
-/*   Updated: 2024/11/12 10:12:02 by msisto           ###   ########.fr       */
+/*   Updated: 2024/11/12 14:10:02 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	dead_check(philo_t *philo)
+int	dead_check(t_philo *philo)
 {
 	pthread_mutex_lock(philo->dead_lock);
 	if (*philo->dead == 1)
@@ -23,9 +23,9 @@ int	dead_check(philo_t *philo)
 
 void	*philo_routine(void	*input)
 {
-	philo_t	*philo;
+	t_philo	*philo;
 
-	philo = (philo_t *)input;
+	philo = (t_philo *)input;
 	if (philo->id % 2 == 0)
 		ft_usleep(10);
 	while (!dead_check(philo))
@@ -37,7 +37,7 @@ void	*philo_routine(void	*input)
 	return (input);
 }
 
-int	thread_create(table_t *table, pthread_mutex_t *forks)
+int	thread_create(t_table *table, pthread_mutex_t *forks)
 {
 	pthread_t	monitor;
 	int			i;
@@ -47,7 +47,8 @@ int	thread_create(table_t *table, pthread_mutex_t *forks)
 		destory_all(table, forks);
 	while (i < table->philos[0].num_of_philos)
 	{
-		if (pthread_create(&table->philos[i].thread, NULL, &philo_routine, &table->philos[i]) != 0)
+		if (pthread_create(&table->philos[i].thread, NULL,
+				&philo_routine, &table->philos[i]) != 0)
 			destory_all(table, forks);
 		i++;
 	}

@@ -6,24 +6,24 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 12:01:40 by akmonke           #+#    #+#             */
-/*   Updated: 2024/11/12 10:35:03 by msisto           ###   ########.fr       */
+/*   Updated: 2024/11/12 14:09:00 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	sleeping(philo_t *philo)
+void	sleeping(t_philo *philo)
 {
 	print_status("is sleeping", philo, philo->id);
 	ft_usleep(philo->time_to_sleep);
 }
 
-void	think(philo_t *philo)
+void	think(t_philo *philo)
 {
 	print_status("is thinking", philo, philo->id);
 }
 
-void	eat(philo_t *philo)
+void	eat(t_philo *philo)
 {
 	pthread_mutex_lock(philo->r_fork);
 	if (philo->num_of_philos == 1)

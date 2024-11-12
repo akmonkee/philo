@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:04:49 by msisto            #+#    #+#             */
-/*   Updated: 2024/11/11 14:31:01 by msisto           ###   ########.fr       */
+/*   Updated: 2024/11/12 14:06:51 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct philo_s
 	pthread_mutex_t	*write_lock;
 	pthread_mutex_t	*dead_lock;
 	pthread_mutex_t	*meal_lock;
-}		philo_t;
+}		t_philo;
 
 typedef struct table_s
 {
@@ -46,34 +46,35 @@ typedef struct table_s
 	pthread_mutex_t	dead_lock;
 	pthread_mutex_t	meal_lock;
 	pthread_mutex_t	write_lock;
-	philo_t			*philos;
-}		table_t;
+	t_philo			*philos;
+}		t_table;
 
 //input check//
 void	no_alpha(int ac, char **av);
 //struct init//
-void	table_builder(table_t *table, philo_t *philos);
+void	table_builder(t_table *table, t_philo *philos);
 void	fork_maker(pthread_mutex_t *forks, int num);
-void	arg_init(philo_t *philos, char **av);
-void	philo_maker(philo_t *philos, table_t *table, pthread_mutex_t *forks, char **av);
+void	arg_init(t_philo *philos, char **av);
+void	philo_maker(t_philo *philos, t_table *table,
+			pthread_mutex_t *forks, char **av);
 //utils//
-void	print_status(char *str, philo_t *philo, int id);
-void	destory_all(table_t *table, pthread_mutex_t *forks);
+void	print_status(char *str, t_philo *philo, int id);
+void	destory_all(t_table *table, pthread_mutex_t *forks);
 size_t	get_current_time(void);
 int		ft_atoi(char *str);
 int		ft_usleep(size_t milliseconds);
 //thread//
-int		dead_check(philo_t *philo);
+int		dead_check(t_philo *philo);
 void	*philo_routine(void	*input);
-int		thread_create(table_t *table, pthread_mutex_t *forks);
+int		thread_create(t_table *table, pthread_mutex_t *forks);
 //philo actions//
-void	sleeping(philo_t *philo);
-void	think(philo_t *philo);
-void	eat(philo_t *philo);
+void	sleeping(t_philo *philo);
+void	think(t_philo *philo);
+void	eat(t_philo *philo);
 //monitor actions//
-int		philo_dead_check(philo_t *philo);
-int		check_for_deads(philo_t *philos);
-int		all_have_eaten(philo_t	*philos);
+int		philo_dead_check(t_philo *philo);
+int		check_for_deads(t_philo *philos);
+int		all_have_eaten(t_philo	*philos);
 void	*monitor_routine(void *input);
 
 #endif

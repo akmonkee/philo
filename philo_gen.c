@@ -6,13 +6,13 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:07:41 by msisto            #+#    #+#             */
-/*   Updated: 2024/11/11 14:31:11 by msisto           ###   ########.fr       */
+/*   Updated: 2024/11/12 14:07:34 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	arg_init(philo_t *philos, char **av)
+void	arg_init(t_philo *philos, char **av)
 {
 	philos->time_to_die = ft_atoi(av[2]);
 	philos->time_to_eat = ft_atoi(av[3]);
@@ -36,7 +36,8 @@ void	fork_maker(pthread_mutex_t *forks, int num)
 	}
 }
 
-void	philo_maker(philo_t *philos, table_t *table, pthread_mutex_t *forks, char **av)
+void	philo_maker(t_philo *philos, t_table *table,
+			pthread_mutex_t *forks, char **av)
 {
 	int	i;
 
@@ -62,7 +63,7 @@ void	philo_maker(philo_t *philos, table_t *table, pthread_mutex_t *forks, char *
 	}
 }
 
-void	table_builder(table_t *table, philo_t *philos)
+void	table_builder(t_table *table, t_philo *philos)
 {
 	table->dead_flag = 0;
 	table->philos = philos;
