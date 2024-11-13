@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:04:49 by msisto            #+#    #+#             */
-/*   Updated: 2024/11/12 14:06:51 by msisto           ###   ########.fr       */
+/*   Updated: 2024/11/13 10:34:40 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ typedef struct philo_s
 {
 	pthread_t		thread;
 	int				id;
-	int				eating;
 	int				meals_eaten;
 	size_t			last_meal;
 	size_t			time_to_die;

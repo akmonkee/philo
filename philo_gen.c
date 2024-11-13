@@ -6,7 +6,7 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:07:41 by msisto            #+#    #+#             */
-/*   Updated: 2024/11/12 14:07:34 by msisto           ###   ########.fr       */
+/*   Updated: 2024/11/13 10:34:51 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	philo_maker(t_philo *philos, t_table *table,
 	while (i < ft_atoi(av[1]))
 	{
 		philos[i].id = i + 1;
-		philos[i].eating = 0;
 		philos[i].meals_eaten = 0;
 		arg_init(&philos[i], av);
 		philos[i].start_time = get_current_time();
