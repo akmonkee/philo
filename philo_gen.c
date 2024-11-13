@@ -16,7 +16,7 @@ void	arg_init(t_philo *philos, char **av)
 {
 	philos->time_to_die = ft_atoi(av[2]);
 	philos->time_to_eat = ft_atoi(av[3]);
-	philos->time_to_sleep = ft_atoi(av[3]);
+	philos->time_to_sleep = ft_atoi(av[4]);
 	philos->num_of_philos = ft_atoi(av[1]);
 	if (av[5])
 		philos->num_times_to_eat = ft_atoi(av[5]);
