@@ -6,13 +6,13 @@
 /*   By: msisto <msisto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:07:41 by msisto            #+#    #+#             */
-/*   Updated: 2024/11/12 14:08:10 by msisto           ###   ########.fr       */
+/*   Updated: 2024/11/12 11:43:43 by msisto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	print_status(char *str, t_philo *philo, int id)
+void	print_status(char *str, philo_t *philo, int id)
 {
 	size_t	time;
 
@@ -23,7 +23,7 @@ void	print_status(char *str, t_philo *philo, int id)
 	pthread_mutex_unlock(philo->write_lock);
 }
 
-void	destory_all(t_table *table, pthread_mutex_t *forks)
+void	destory_all(table_t *table, pthread_mutex_t *forks)
 {
 	int	i;
 
@@ -63,13 +63,12 @@ int	ft_atoi(char *str)
 {
 	int	num;
 	int	i;
-
 	num = 0;
 	i = 0;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		if (num * 10 < 0)
-			return (write(2, "Error\n", 6), exit(1), 1);
+		return (write(2, "Error\n", 6), exit(1), 1);
 		num = (num * 10) + (str[i] - '0');
 		i++;
 	}
